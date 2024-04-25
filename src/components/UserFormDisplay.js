@@ -1,27 +1,28 @@
-import { Box, FormHelperText, TextField, Input, Stack, Typography, TextareaAutosize as Textarea, Button } from '@mui/material';
-
+import { Container, TextField, Typography,Box, Button } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid'; // For generating UUIDs
 import dataUserShowPersist from '../Zustand/DataPersist';
 
-const UserForm = () => {
-  // const { userShow, setUserShow } = dataUserShowPersist();
+const UserFormDisplay = () => {
+  const { userShow, setUserShow } = dataUserShowPersist();
+  const alreadyHaveValue = JSON.parse(localStorage.getItem('userData'));
   const inputRef = useRef();
+  const [count, setCount] = useState(1);
   const [unsavedChanges, setUnsavedChanges] = useState(false);
 
-  const [inputState, SetInputState] = useState({
-    userId: "",
-    name: "",
-    email: "",
-    textarea: "",
-    tel: "",
+  const [inputState, setInputState] = useState({
+    userId: '',
+    name: '',
+    email: '',
+    textarea: '',
+    tel: '',
   });
 
   const [errors, setErrors] = useState({
-    name: "",
-    email: "",
-    textarea: "",
-    tel: "",
+    name: '',
+    email: '',
+    textarea: '',
+    tel: '',
   });
 
   function validateForm() {
@@ -64,25 +65,30 @@ const UserForm = () => {
     if (validateForm()) {
       const userId = uuidv4();
       localStorage.setItem('userData', JSON.stringify({ ...inputState, userId }));
-      // setUserShow(userId);
+      setUserShow(userId);
       setUnsavedChanges(false);
-      inputRef.current.innerText = 'Form Saved Successfully';
+      inputRef.current.innerText = 'Form Edited Successfully';
     } else {
       inputRef.current.innerText = '';
     }
-  }
+  };
+
+  useEffect(() => {
+    setInputState(alreadyHaveValue);
+  }, [userShow]);
 
   const handleNameChange = (event) => {
     const { name, value } = event.target;
-    SetInputState((oldState) => ({
+    setInputState((oldState) => ({
       ...oldState,
       [name]: value,
     }));
+
     setUnsavedChanges(true);
-  }
+  };
 
   useEffect(() => {
-    const handleBeforeUnload = event => {
+    const handleBeforeUnload = (event) => {
       if (unsavedChanges) {
         event.preventDefault();
         event.returnValue = ''; // This line will show a confirmation dialog
@@ -97,9 +103,9 @@ const UserForm = () => {
   }, [unsavedChanges]);
 
   return (
-    <div className="flex justify-center">
-      <Box style={{ width: "100%" }} onSubmit={handleOnSubmitForm}>
-      <div className="mb-4">
+    <Container maxWidth="xs" component="main" className="mx-auto my-10">
+      <Box component="form" onSubmit={handleOnSubmitForm} noValidate sx={{ mt: 1 }}>
+        <div className="mb-4">
           <TextField
            margin="normal"
            required
@@ -119,7 +125,6 @@ const UserForm = () => {
             helperText={errors.name}
           />
         </div>
-
         <div className="mb-4">
           <TextField
            margin="normal"
@@ -138,7 +143,6 @@ const UserForm = () => {
             helperText={errors.email}
           />
         </div>
-
         <div className="mb-4">
           <TextField
             value={inputState?.textarea}
@@ -153,7 +157,6 @@ const UserForm = () => {
             helperText={errors.textarea}
           />
         </div>
-
         <div className="mb-4">
           <TextField
             value={inputState?.tel}
@@ -167,12 +170,19 @@ const UserForm = () => {
             helperText={errors.tel}
           />
         </div>
-
-        <Button variant="contained" color="primary" fullWidth type='submit'>Save</Button>
-        <Typography ref={inputRef} variant="body2"  className="mt-6" color="success">Form Saved Successfully</Typography>
-        </Box>
-    </div>
+        <Typography mt={3} p={2} fontWeight={700} border="1px solid lightgray">
+          Unique User Id is{' '}
+          <Typography component="span" fontWeight={500} color="blue.300">
+            {inputState?.userId}
+          </Typography>
+        </Typography>
+        <Button variant="contained" color="primary" fullWidth type="submit" className="mt-6">
+          Edit
+        </Button>
+        <Typography ref={inputRef} fontSize="small" color="green.500" fontWeight={700}></Typography>
+      </Box>
+    </Container>
   );
-}
+};
 
-export default UserForm;
+export default UserFormDisplay;

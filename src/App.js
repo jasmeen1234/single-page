@@ -1,18 +1,22 @@
-import React,{useState}from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Counter from './components/Counter';
 import RichText from './components/RichText';
 import UserForm from './components/UserForm';
+import ColorRang from './components/ColorRang';
+import UserFormDisplay from './components/UserFormDisplay';
+import { Home } from '@mui/icons-material';
+
 function App() {
-  // eslint-disable-next-line
+  const [count, setCount] = useState(0);
   const [richTextData, setRichTextData] = useState('');
-  // eslint-disable-next-line
   const [formData, setFormData] = useState({
     name: '',
     address: '',
     email: '',
     phone: ''
-});
+  });
+
   const handleSubmit = (formData) => {
     const { name, address, email, phone, password } = formData;
     const richTextContent = `Name: <strong>${name}</strong><br/>
@@ -23,16 +27,24 @@ function App() {
 
     setRichTextData(richTextContent);
   };
+
+  const handleRangeChange = (value) => {
+    setCount(value);
+  };
+
   return (
     <div className="App">
       <div className='left'>
-      <Counter/>
-      <RichText  formData={formData}/>
+        <Counter count={count} handleRangeChange={handleRangeChange} />
+        <RichText formData={formData} />
       </div>
       <div className='right'>
-      <UserForm  onSubmit={handleSubmit}/>
+        <UserForm onSubmit={handleSubmit} />
+        <UserFormDisplay />
+        
+        {/* <Home /> */}
       </div>
-      
+      <ColorRang count={count} handleRangeChange={handleRangeChange} />
     </div>
   );
 }
