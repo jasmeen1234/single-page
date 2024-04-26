@@ -7,7 +7,7 @@ const ColorRang = ({ count, handleRangeChange }) => {
   };
 
   return (
-    <div style={{ backgroundColor: calculateBackgroundColor(), minHeight: '10vh', minWidth: '100vw', transition: 'background-color 0.5s linear' }}>
+    <div style={{ backgroundColor: calculateBackgroundColor(), minHeight: '10vh', minWidth: '10vw', transition: 'background-color 0.5s linear' }}>
       <input
         type="range"
         min="0"
