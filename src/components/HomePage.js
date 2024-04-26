@@ -19,23 +19,25 @@ function HomePage() {
   };
 
   return (
-    <div className="w-full h-screen flex flex-wrap overflow-hidden">
+    <div className="w-8/10 h-screen flex flex-wrap">
       
-        <div className="w-3/5 h-1/2 bg-blue-200 flex justify-center items-center overflow-hidden">
+        <div className="w-1/2 h-9/20 bg-blue-200 flex justify-center items-center overflow-hidden">
           <Counter count={count} handleRangeChange={handleRangeChange} />
         </div>
-        <div className="w-2/5 h-1/2 bg-pink-200 flex justify-center items-center overflow-hidden">
+        <div className="w-1/2 h-9/20 bg-pink-200 flex justify-center items-center overflow-hidden">
           <RichText formData={formData} />
         </div>
      
       
-        <div className="w-2/5 h-1/2 bg-green-200 flex justify-center items-center overflow-hidden">
+        <div className="w-1/2 h-9/20 bg-green-200 flex justify-center items-center overflow-hidden">
           <UserForm />
         </div>
-        <div className="w-2/5 h-1/2 bg-yellow-200 flex justify-center items-center overflow-hidden">
+        <div className="w-1/2 h-9/20 bg-yellow-200 flex justify-center items-center overflow-hidden">
           <UserFormDisplay />
         </div>
-        <ColorRang  className="flex justify-center items-center" count={count} handleRangeChange={handleRangeChange} />
+        <div className="w-full h-1/10 ">
+        <ColorRang   count={count} handleRangeChange={handleRangeChange} />
+        </div>
     </div>
   );
 }
