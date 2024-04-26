@@ -20,33 +20,26 @@ function HomePage() {
 
   return (
     <div className="flex justify-center flex-col px-4 py-8">
-    {/* Counter and RichText Section */}
+   
     <div className="w-full md:w-1/2 pr-4 flex flex-row gap-4 mb-8">
-      {/* Counter Component */}
+     
       <div className="flex-1">
         <Counter count={count} handleRangeChange={handleRangeChange} />
       </div>
 
-      {/* RichText Component */}
+  
       <div className="flex-1">
         <RichText formData={formData} />
       </div>
     </div>
-
-    {/* UserForm and UserFormDisplay Section */}
-    <div className="w-full md:w-1/2 pl-4 mb-8">
-      {/* UserForm Component */}
-      <div className="mb-4">
+    <div className="w-full md:w-1/2 pl-4 mb-8 flex flex-row md:flex-row md:flex-wrap gap-4">
+      <div className="mb-4 md:w-1/2">
         <UserForm />
       </div>
-
-      {/* UserFormDisplay Component */}
-      <div className="mb-4">
+      <div className="mb-4 md:w-1/2">
         <UserFormDisplay />
       </div>
     </div>
-
-    {/* ColorRang Component */}
     <ColorRang count={count} handleRangeChange={handleRangeChange} />
   </div>
   );
