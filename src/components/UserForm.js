@@ -77,7 +77,7 @@ const UserForm = () => {
   }, [unsavedChanges]);
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" >
       <Box
         component="form"
         onSubmit={handleOnSubmitForm}
