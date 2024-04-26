@@ -41,7 +41,7 @@ function App() {
         <RichText   formData={formData} />
       </div>
       <div className='right'>
-        <UserForm   onSubmit={handleSubmit} />
+        <UserForm    />
          <UserFormDisplay />
         
       </div>
