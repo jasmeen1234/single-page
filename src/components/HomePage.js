@@ -19,29 +19,24 @@ function HomePage() {
   };
 
   return (
-    <div className="w-full bg-blue-200 flex justify-center flex-col px-4 py-8">
-   
-    <div className="w-full md:w-1/2 pr-4 flex flex-row gap-40 mb-8">
+    <div className="w-full h-screen flex flex-wrap overflow-hidden">
+      
+        <div className="w-3/5 h-1/2 bg-blue-200 flex justify-center items-center overflow-hidden">
+          <Counter count={count} handleRangeChange={handleRangeChange} />
+        </div>
+        <div className="w-2/5 h-1/2 bg-pink-200 flex justify-center items-center overflow-hidden">
+          <RichText formData={formData} />
+        </div>
      
-      <div className="flex-1 text-4xl">
-        <Counter count={count} handleRangeChange={handleRangeChange} />
-      </div>
-
-  
-      <div className="flex-1">
-        <RichText formData={formData} />
-      </div>
+      
+        <div className="w-2/5 h-1/2 bg-green-200 flex justify-center items-center overflow-hidden">
+          <UserForm />
+        </div>
+        <div className="w-2/5 h-1/2 bg-yellow-200 flex justify-center items-center overflow-hidden">
+          <UserFormDisplay />
+        </div>
+        <ColorRang  className="flex justify-center items-center" count={count} handleRangeChange={handleRangeChange} />
     </div>
-    <div className="w-full md:w-1/2 pl-4 mb-8 flex justify-center flex-row  gap-40">
-      <div className="mb-4 md:w-1/2 bg-white">
-        <UserForm />
-      </div>
-      <div className="mb-4 md:w-1/2 bg-white">
-        <UserFormDisplay />
-      </div>
-    </div>
-    <ColorRang count={count} handleRangeChange={handleRangeChange} />
-  </div>
   );
 }
 

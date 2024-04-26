@@ -104,10 +104,15 @@ const UserFormDisplay = () => {
   }, [unsavedChanges]);
 
   return (
-    <Container maxWidth="xs" component="main" className="mx-auto my-10">
-      <Box component="form" onSubmit={handleOnSubmitForm} noValidate sx={{ mt: 1 }}>
-        <div className="mb-4">
+    <Container maxWidth="sx" >
+      <Box component="form" onSubmit={handleOnSubmitForm} noValidate sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '16px',
+        }}>
+       
           <TextField
+        
            margin="normal"
            required
               fullWidth
@@ -125,9 +130,10 @@ const UserFormDisplay = () => {
             error={!!errors.name}
             helperText={errors.name}
           />
-        </div>
-        <div className="mb-4">
+        
+        
           <TextField
+         
            margin="normal"
            required
            fullWidth
@@ -143,9 +149,10 @@ const UserFormDisplay = () => {
             error={!!errors.email}
             helperText={errors.email}
           />
-        </div>
-        <div className="mb-4">
+        
+        
           <TextField
+          fullWidth
             value={inputState?.textarea}
             name="textarea"
             onChange={handleNameChange}
@@ -153,34 +160,33 @@ const UserFormDisplay = () => {
             multiline
             rows={4}
             variant="outlined"
-            fullWidth
+           
             error={!!errors.textarea}
             helperText={errors.textarea}
           />
-        </div>
-        <div className="mb-4">
+       
+        
           <TextField
+          fullWidth
             value={inputState?.tel}
             name="tel"
             onChange={handleNameChange}
             label="Phone"
-            variant="outlined"
-            fullWidth
+            
+           
             type="number"
             error={!!errors.tel}
             helperText={errors.tel}
           />
-        </div>
-        <Typography mt={3} p={2} fontWeight={700} border="1px solid lightgray">
-          Unique User Id is{' '}
-          <Typography component="span" fontWeight={500} color="blue.300">
-            {inputState?.userId}
-          </Typography>
+        
+        <Typography className='text-blue-300 font-semibold'>
+          Unique User Id is{inputState?.userId}
+          
         </Typography>
-        <Button variant="contained" color="primary" fullWidth type="submit" className="mt-6">
+        <Button variant="contained" color="primary"  type="submit" >
           Edit
         </Button>
-        <Typography ref={inputRef} fontSize="small" color="green.500" fontWeight={700}></Typography>
+        <Typography ref={inputRef} fontSize="small"   variant="body2" color="green.500" fontWeight={700}></Typography>
       </Box>
     </Container>
   );
