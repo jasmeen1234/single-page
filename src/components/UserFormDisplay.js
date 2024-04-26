@@ -65,6 +65,7 @@ const UserFormDisplay = () => {
     if (validateForm()) {
       const userId = uuidv4();
       localStorage.setItem('userData', JSON.stringify({ ...inputState, userId }));
+      // localStorage.getItem()
       setUserShow(userId);
       setUnsavedChanges(false);
       inputRef.current.innerText = 'Form Edited Successfully';
@@ -138,7 +139,7 @@ const UserFormDisplay = () => {
             onChange={handleNameChange}
             label="Email address"
             variant="outlined"
-            fullWidth
+        
             error={!!errors.email}
             helperText={errors.email}
           />

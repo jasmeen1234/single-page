@@ -20,25 +20,25 @@ const Counter = ({ count, handleRangeChange }) => {
 
   return (
     <div
-      className="relative flex flex-col items-center bg-white rounded-lg p-5 w-full md:w-650px h-740px"
+      className="relative flex flex-col items-center bg-white rounded-lg p-5 w-full md:w-1000px h-740px p-20" 
       style={{ backgroundColor: calculateBackgroundColor() }}
     >
-      <h1 className="text-center text-2xl">Count: {count}</h1>
-      <div className="flex flex-wrap justify-center mt-8 space-x-8">
+      <h1 className="text-center text-4xl">Count: {count}</h1>
+      <div  className="flex-wrap justify-center md:justify-between mt-12 md:mt-20 gap-8">
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white rounded-none px-4 py-2"
+          className="bg-blue-500 hover:bg-blue-700 text-white rounded-none px-4 py-2 gap-8"
           onClick={increment}
         >
           +
         </button>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white rounded-none px-4 py-2"
+          className="bg-blue-500 hover:bg-blue-700 text-white rounded-none px-4 py-2 gap-8"
           onClick={reset}
         >
           Reset
         </button>
         <button
-          className="bg-blue-500 hover:bg-blue-700 text-white rounded-none px-4 py-2"
+          className="bg-blue-500 hover:bg-blue-700 text-white rounded-none px-4 py-2 gap-8"
           onClick={decrement}
         >
           -

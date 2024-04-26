@@ -18,12 +18,12 @@ const RichText = () => {
   };
 
   return (
-    <div className="w-full bg-white rounded-lg p-8">
+    <div className="w-full bg-white rounded-lg p-8 gap-30">
       <ReactQuill
         theme="snow"
         value={editorHtml}
         onChange={handleChange}
-        className="bg-white"
+        className="bg-white gap-30"
         modules={{
           toolbar: [
             [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],

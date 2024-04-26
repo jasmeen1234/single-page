@@ -5,10 +5,11 @@ import RichText from './components/RichText';
 import UserForm from './components/UserForm';
 import ColorRang from './components/ColorRang';
 import UserFormDisplay from './components/UserFormDisplay';
-import { Home } from '@mui/icons-material';
+
 
 function App() {
   const [count, setCount] = useState(0);
+ 
   const [richTextData, setRichTextData] = useState('');
   const [formData, setFormData] = useState({
     name: '',
@@ -16,6 +17,7 @@ function App() {
     email: '',
     phone: ''
   });
+  
 
   const handleSubmit = (formData) => {
     const { name, address, email, phone, password } = formData;
@@ -36,13 +38,12 @@ function App() {
     <div className="App">
       <div className='left'>
         <Counter count={count} handleRangeChange={handleRangeChange} />
-        <RichText formData={formData} />
+        <RichText   formData={formData} />
       </div>
       <div className='right'>
-        <UserForm onSubmit={handleSubmit} />
-        <UserFormDisplay />
+        <UserForm   onSubmit={handleSubmit} />
+         <UserFormDisplay />
         
-        {/* <Home /> */}
       </div>
       <ColorRang count={count} handleRangeChange={handleRangeChange} />
     </div>

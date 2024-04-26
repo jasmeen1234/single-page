@@ -5,9 +5,14 @@ import { v4 as uuidv4 } from 'uuid'; // For generating UUIDs
 import dataUserShowPersist from '../Zustand/DataPersist';
 
 const UserForm = () => {
-  // const { userShow, setUserShow } = dataUserShowPersist();
+  const { userShow, setUserShow } = dataUserShowPersist();
   const inputRef = useRef();
   const [unsavedChanges, setUnsavedChanges] = useState(false);
+  // const[userDisplay,setUserDisplay]=useState({userId: "",
+  // name: "",
+  // email: "",
+  // textarea: "",
+  // tel: "",})
 
   const [inputState, SetInputState] = useState({
     userId: "",
@@ -64,7 +69,7 @@ const UserForm = () => {
     if (validateForm()) {
       const userId = uuidv4();
       localStorage.setItem('userData', JSON.stringify({ ...inputState, userId }));
-      // setUserShow(userId);
+      setUserShow(userId);
       setUnsavedChanges(false);
       inputRef.current.innerText = 'Form Saved Successfully';
     } else {
@@ -95,6 +100,9 @@ const UserForm = () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
   }, [unsavedChanges]);
+  // const handleSave=()=>{
+  //    setUserDisplay(inputState)
+  // }
 
   return (
     <div className="flex justify-center">
@@ -133,7 +141,7 @@ const UserForm = () => {
             onChange={handleNameChange}
             label="Email address"
             variant="outlined"
-            fullWidth
+            
             error={!!errors.email}
             helperText={errors.email}
           />
@@ -168,7 +176,7 @@ const UserForm = () => {
           />
         </div>
 
-        <Button variant="contained" color="primary" fullWidth type='submit'>Save</Button>
+        <Button variant="contained" color="primary" fullWidth type='submit' >Save</Button>
         <Typography ref={inputRef} variant="body2"  className="mt-6" color="success">Form Saved Successfully</Typography>
         </Box>
     </div>
