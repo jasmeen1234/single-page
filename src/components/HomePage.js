@@ -24,15 +24,15 @@ function HomePage() {
         <div className="w-1/2 h-9/20 bg-blue-200 flex justify-center items-center overflow-hidden">
           <Counter count={count} handleRangeChange={handleRangeChange} />
         </div>
-        <div className="w-1/2 h-9/20 bg-pink-200 flex justify-center items-center overflow-hidden">
+        <div className="w-1/2 h-9/20  flex justify-center items-center overflow-hidden">
           <RichText formData={formData} />
         </div>
      
       
-        <div className="w-1/2 h-9/20 bg-green-200 flex justify-center items-center overflow-hidden">
+        <div className="w-1/2 h-9/20 flex justify-center items-center overflow-hidden">
           <UserForm />
         </div>
-        <div className="w-1/2 h-9/20 bg-yellow-200 flex justify-center items-center overflow-hidden">
+        <div className="w-1/2 h-9/20 flex justify-center items-center overflow-hidden">
           <UserFormDisplay />
         </div>
         <div className="w-full h-1/10 ">
